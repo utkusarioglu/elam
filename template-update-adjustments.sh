@@ -3,6 +3,7 @@
 source ${0%/*}/checks.sh
 check_repo_config
 source ${0%/*}/utils.sh
+source ${0%/*}/adjustments.sh
 
 git_origin_update() {
   record_target=$1
