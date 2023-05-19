@@ -13,7 +13,7 @@ check_repo_config() {
 }
 
 check_vars() {
-  for var in REPO_CLASS REPO_PATH REPO_SERVICE; do
+  for var in REPO_TYPE REPO_CLASS REPO_PATH REPO_SERVICE; do
     if [ -z "${!var}" ]; then
       echo "Error: .repo.config.$var is required for this script to work"
       exit 20
