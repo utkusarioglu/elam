@@ -7,6 +7,9 @@ do_adjustments() {
     continue
   fi
   echo "Replacing '$current' with '$replacement'…"
-  find . -type f \( ! -iwholename "./${0%/*}/setup.sh" ! -iname ".git" \) \
+  find . -type f \( \
+    ! -iwholename "./${0%/*}/setup.sh" \
+    ! -iname ".git" \
+    \) \
     -exec sed -i "s:$current:$replacement:g" {} \;
 }
