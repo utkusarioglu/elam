@@ -28,13 +28,17 @@ check_vars() {
 
 copy_config_files_to_temp() {
   for config_file in $CONFIG_FILES; do
-    cp "$config_file" "/tmp/$config_file" 2> /dev/null
+    if [ -f "$config_file" ]; then
+      cp "$config_file" "/tmp/$config_file" 
+    fi
   done
 }
 
 move_config_files_to_repo_path() {
   for config_file in $CONFIG_FILES; do
-    cp "$config_file" "/tmp/$config_file" 2> /dev/null
+    if [ -f "/tmp/$config_file" ]; then
+      mv  "/tmp/$config_file" "$config_file"
+    fi
   done
 }
 
