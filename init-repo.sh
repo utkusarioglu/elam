@@ -3,17 +3,22 @@
 source ${0%/*}/adjustments.sh
 source .repo.config
 
-CONFIG_FILES=".repo-template.config .parent-template.config"
+CONFIG_FILES=".repo.config .repo-template.config .parent-template.config"
 
 check_repo_config() {
   if [ ! -f ".repo.config" ]; then
     echo "Error: .repo.config file needs to be defined for this script to work"
+
+    echo "You need the following values set:"
+    echo "REPO_CLASS: A Java style repo class that will be the used as the devcontainer name"
+    echo "REPO_PATH: The path at which the repo will be mounted inside the devcontainer"
+    echo "REPO_SERVICE: Docker service name that will be assigned to the repo"
     exit 10
   fi
 }
 
 check_vars() {
-  for var in REPO_TYPE REPO_CLASS REPO_PATH REPO_SERVICE; do
+  for var in REPO_CLASS REPO_PATH REPO_SERVICE; do
     if [ -z "${!var}" ]; then
       echo "Error: .repo.config.$var is required for this script to work"
       exit 20
