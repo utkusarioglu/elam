@@ -9,7 +9,7 @@ function entrypoint_repo_routes {
     ;; 
 
     *)
-       entrypoint_repo_help
-       ;;
+      entrypoint_repo_help
+     ;;
   esac
 }
