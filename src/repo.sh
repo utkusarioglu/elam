@@ -1,11 +1,13 @@
 function entrypoint_repo_routes {
   case "$2" in
     init)
-      ${0%/*}/init-repo.sh "$@"
+      source $SRC/init-repo.sh 
+      repo_init "$@"
     ;;
     
     status)
-      ${0%/*}/update-status.sh "$@"
+      source $SRC/update-status.sh 
+      repo_status "$@"
     ;; 
 
     *)

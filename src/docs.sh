@@ -1,4 +1,4 @@
-source ${0%/*}/constants.sh
+source $SRC/constants.sh
 
 function entrypoint_help {
   echo -e "${BOLD_BLUE_TEXT}Elam Repo Updater${DEFAULT_TEXT}"

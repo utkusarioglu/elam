@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ${0%/*}/adjustments.sh
+source $SRC/adjustments.sh
 source .repo.config
 
 CONFIG_FILES=".repo.config .repo-template.config .parent-template.config"
@@ -42,14 +42,16 @@ move_config_files_to_repo_path() {
   done
 }
 
-check_repo_config
-check_vars
-copy_config_files_to_temp
+function repo_init {
+  check_repo_config
+  check_vars
+  copy_config_files_to_temp
 
-echo "Starting initialization…"
-do_adjustments name $REPO_CLASS
-do_adjustments workspaceFolder $REPO_PATH
-do_adjustments service $REPO_SERVICE
+  echo "Starting initialization…"
+  do_adjustments name $REPO_CLASS
+  do_adjustments workspaceFolder $REPO_PATH
+  do_adjustments service $REPO_SERVICE
 
-move_config_files_to_repo_path
-echo "Starting initialization finished"
+  move_config_files_to_repo_path
+  echo "Starting initialization finished"
+}

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ${0%/*}/constants.sh
+source $SRC/constants.sh
 source .env 2> /dev/null
 source $REPO_CONFIG_FILE
 

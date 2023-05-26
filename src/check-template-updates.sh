@@ -1,7 +1,7 @@
 
-source ${0%/*}/constants.sh
-source ${0%/*}/checks.sh
-source ${0%/*}/utils.sh
+source $SRC/constants.sh
+source $SRC/checks.sh
+source $SRC/utils.sh
 
 check_template_updates() {
   template_repo_origin=$1
