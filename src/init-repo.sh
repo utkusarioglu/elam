@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source $SRC/adjustments.sh
 source $REPO/.repo.config
+source $SRC/template-update-adjustments.sh
 
 CONFIG_FILES=".repo.config .repo-template.config .parent-template.config"
 

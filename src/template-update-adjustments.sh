@@ -3,7 +3,9 @@
 source $SRC/checks.sh
 check_repo_config
 source $SRC/utils.sh
-source $SRC/adjustments.sh
+# TODO this one is overwritten in this file, not clear why it was ever
+# defined, remove after some time
+# source $SRC/adjustments.sh
 
 git_origin_update() {
   record_target=$1
@@ -27,8 +29,11 @@ do_adjustments() {
     continue
   fi
   echo "Replacing '$current' with '$replacement'…"
-  find . -type f \( ! -iwholename "./${0%/*}/setup.sh" ! -iname ".git" \) \
+  find . -type f \( ! -iname ".git" \) \
     -exec sed -i "s:$current:$replacement:g" {} \;
+# TODO this was removed from the find command above, not clear what it 
+# once did. 
+#- ! -iwholename "./${0%/*}/setup.sh"
 }
 
 function do_template_update_adjustments {

@@ -131,7 +131,6 @@ EOF
 
   echo "Applying standard update adjustments…"
   source $SRC/template-update-adjustments.sh
-  # ${0%/*}/template-update-adjustments.sh \
   do_template_update_adjustments \
     $template_repo_url \
     $repo_class \
