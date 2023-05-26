@@ -1,7 +1,8 @@
 #!/bin/bash
 
+REPO=${PWD}
 SRC=$(dirname ${BASH_SOURCE[0]})
-echo $SRC
+echo "repo $REPO"
 # Elam entrypoint
 #
 # For now, this file only calls the script files. 

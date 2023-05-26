@@ -92,10 +92,10 @@ EOF
     exit 1
   fi
 
-  record_target=$REPO_CONFIG_FILE
+  record_target=$REPO/$REPO_CONFIG_FILE
   if [[ "$update_mode" == "parent" ]];
   then
-    record_target=$PARENT_TEMPLATE_CONFIG_FILE
+    record_target=$REPO/$PARENT_TEMPLATE_CONFIG_FILE
   fi
 
   git checkout -b $local_staging_branch

@@ -1,12 +1,12 @@
 #!/bin/bash
 
 source $SRC/adjustments.sh
-source .repo.config
+source $REPO/.repo.config
 
 CONFIG_FILES=".repo.config .repo-template.config .parent-template.config"
 
 check_repo_config() {
-  if [ ! -f ".repo.config" ]; then
+  if [ ! -f "$REPO/.repo.config" ]; then
     echo "Error: .repo.config file needs to be defined for this script to work"
 
     echo "You need the following values set:"
@@ -28,8 +28,8 @@ check_vars() {
 
 copy_config_files_to_temp() {
   for config_file in $CONFIG_FILES; do
-    if [ -f "$config_file" ]; then
-      cp "$config_file" "/tmp/$config_file" 
+    if [ -f "$REPO/$config_file" ]; then
+      cp "$REPO/$config_file" "/tmp/$config_file" 
     fi
   done
 }
@@ -37,7 +37,7 @@ copy_config_files_to_temp() {
 move_config_files_to_repo_path() {
   for config_file in $CONFIG_FILES; do
     if [ -f "/tmp/$config_file" ]; then
-      mv  "/tmp/$config_file" "$config_file"
+      mv  "/tmp/$config_file" "$REPO/$config_file"
     fi
   done
 }
