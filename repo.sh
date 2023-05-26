@@ -1,4 +1,4 @@
-function repo_subcommand {
+function entrypoint_repo_routes {
   case "$2" in
     init)
       ${0%/*}/init-repo.sh "$@"
@@ -9,8 +9,7 @@ function repo_subcommand {
     ;; 
 
     *)
-       echo 'elam repo'
-       echo 'elam repo help is here'
+       entrypoint_repo_help
        ;;
   esac
 }

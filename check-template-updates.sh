@@ -1,3 +1,5 @@
+
+source ${0%/*}/constants.sh
 source ${0%/*}/checks.sh
 source ${0%/*}/utils.sh
 

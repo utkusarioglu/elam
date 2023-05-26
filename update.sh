@@ -1,4 +1,4 @@
-function update_subcommand {
+function entrypoint_update_routes {
   case $2 in
     start)
       ${0%/*}/start-template-update.sh "$@"
@@ -13,7 +13,7 @@ function update_subcommand {
     ;;
 
     *)
-      echo 'elam update help'
-      echo 'this is where elam update help lives'
+      entrypoint_update_help
+    ;;
   esac
 }

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source ${0%/*}/constants.sh
 source ${0%/*}/checks.sh
 check_repo_config
 check_repo_template_config
