@@ -1,5 +1,7 @@
-source ${0%/*}/checks.sh
-source ${0%/*}/utils.sh
+
+source $SRC/constants.sh
+source $SRC/checks.sh
+source $SRC/utils.sh
 
 check_template_updates() {
   template_repo_origin=$1
@@ -17,10 +19,10 @@ check_template_updates() {
   template_date_human=$(git_last_commit_utc_date $template_repo_ref)
   template_date_epoch=$(date -d "$template_date_human" +%s)
 
-  record_target=$REPO_CONFIG_FILE
+  record_target=$REPO/$REPO_CONFIG_FILE
   if [[ "$update_mode" == "parent" ]];
   then
-    record_target=$PARENT_TEMPLATE_CONFIG_FILE
+    record_target=$REPO/$PARENT_TEMPLATE_CONFIG_FILE
   fi
   
   local_repo_url=$(git remote get-url origin)
@@ -69,10 +71,10 @@ check_config_attributes() {
 check_repo_template_updates() {
   if [[ $REPO_UPDATE_TYPE == "repository" ]];
   then
-    repo_config_response=$(check_config_attributes "Repo" "$REPO_CONFIG_FILE")
+    repo_config_response=$(check_config_attributes "Repo" "$REPO/$REPO_CONFIG_FILE")
     if [[ "$repo_config_response" != *"Error"* ]];
     then
-      source $REPO_CONFIG_FILE
+      source $REPO/$REPO_CONFIG_FILE
       repo_template_status=$(check_template_updates \
         $TEMPLATE_REPO_ORIGIN \
         $TEMPLATE_REPO_BRANCH \
@@ -90,10 +92,10 @@ check_repo_template_updates() {
 check_parent_template_updates() {
   if [[ $REPO_UPDATE_TYPE == "template" ]];
   then
-    config_response=$(check_config_attributes "Parent" "$PARENT_TEMPLATE_CONFIG_FILE")
+    config_response=$(check_config_attributes "Parent" "$REPO/$PARENT_TEMPLATE_CONFIG_FILE")
     if [[ "$config_response" != *"Error"* ]] && [[ "$config_response" != *"Warn"* ]]
     then
-      source $PARENT_TEMPLATE_CONFIG_FILE
+      source $REPO/$PARENT_TEMPLATE_CONFIG_FILE
       parent_template_status=$(check_template_updates \
         $TEMPLATE_REPO_ORIGIN \
         $TEMPLATE_REPO_BRANCH \
