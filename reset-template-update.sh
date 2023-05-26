@@ -1,9 +1,11 @@
 #!/bin/bash
 
+source ${0%/*}/checks.sh
+
 echo "Warn: This is an experimental script. It may cause data loss!"
 echo "Use at your own risk."
 
-update_mode=$1
+update_mode=$3
 
 if [[ "$update_mode" != "repo" ]] && [[ "$update_mode" != "parent" ]];
 then

@@ -1,15 +1,27 @@
 #!/bin/bash
 
-source ${0%/*}/repo.sh
-source ${0%/*}/update.sh
-
 # Elam entrypoint
 #
 # For now, this file only calls the script files. 
 # In time it should assume the role of the sole executable in the repo, 
 # with all other script files only offering functionality
 
+source ${0%/*}/repo.sh
+source ${0%/*}/update.sh
+
 case "$1" in
+  repo)
+    repo_subcommand "$@"
+  ;;
+
+  update)
+    update_subcommand "$@"
+  ;;
+  
+  *)
+    echo 'help'
+    ;;
+
   # update-status)
   #   echo 'Update status'
   #   ${0%/*}/update-status.sh
@@ -20,10 +32,6 @@ case "$1" in
   #   ${0%/*}/init-repo.sh
   #   ;;
   
-  repo)
-    repo_subcommand "$@"
-  ;;
-
   # start-template-update)
   #   echo 'Start template update'
   #   ${0%/*}/start-template-update.sh
@@ -38,12 +46,4 @@ case "$1" in
   #   echo 'Finalize template update'
   #   ${0%/*}/finalize-template-update.sh
   #   ;;
-  
-  update)
-    update_subcommand "$@"
-  ;;
-  
-  *)
-    echo 'help'
-    ;;
 esac

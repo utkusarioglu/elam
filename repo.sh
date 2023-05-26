@@ -1,11 +1,11 @@
 function repo_subcommand {
   case "$2" in
     init)
-      ${0%/*}/init-repo.sh
+      ${0%/*}/init-repo.sh "$@"
     ;;
     
     status)
-      ${0%/*}/update-status.sh
+      ${0%/*}/update-status.sh "$@"
     ;; 
 
     *)

@@ -9,7 +9,7 @@ repo_service=$(cat .devcontainer/devcontainer.json | jq -r '.service')
 repo_path=$(pwd)
 
 default_merge_branch=$(git branch --show-current)
-update_mode=$1
+update_mode=$3
 
 if [[ "$update_mode" != "repo" ]] && [[ "$update_mode" != "parent" ]];
 then
