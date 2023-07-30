@@ -30,7 +30,7 @@ function update_start {
   merge_branch=${4:-$default_merge_branch}
   template_ref="$TEMPLATE_REPO_ORIGIN/$TEMPLATE_REPO_BRANCH"
 
-  if [ "$@" == "--help" ] || [ "$@" == "-h" ];
+  if [ "$@" = "--help" ] || [ "$@" = "-h" ];
   then
     cat << EOF
   Git template update
